@@ -1,6 +1,4 @@
 FROM node:13
 WORKDIR /usr/src/app
-# COPY package*.json ./
-VOLUME  . 
-#RUN npm install
-CMD [ "node", "index.js" ]
+RUN npm install && npm install -g nodemon
+CMD [ "nodemon", "index.js" ]
