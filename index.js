@@ -1,9 +1,11 @@
-const db = require('./db/index')
 
-db.query("insert into test_table (column1) values(2)", null, (err, data)=>{
-    if(err){
-        console.error('err---', err)
-    }console.log("sended")
+const express = require('express');
+const app = express();
+
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
+
+app.listen(3000, () => {
+    console.log('Server is running')
 })
-
-console.log('this is workssadf');
