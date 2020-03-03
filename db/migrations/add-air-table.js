@@ -74,8 +74,6 @@ const createAirportsTable = async () => {
     )
 }
 const createTable = async () => {
-    console.log('2');
-
     await db.query(
         `
         DROP TABLE IF EXISTS airports;
@@ -83,7 +81,6 @@ const createTable = async () => {
     )
     await createAirportsTable();
     await getAllInfarmations();
-    console.log('hjghljk',)
 }
 
 createTable();
