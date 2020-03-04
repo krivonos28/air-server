@@ -9,12 +9,17 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jest": "^25.1.0",
-    "pg": "^7.18.2"
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.5",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "jest",
-    "migrate": "node ./db/migrations/add-air-table.js"
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "seeds": "npx sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",

@@ -1,62 +1,62 @@
 const db = require('../index');
 const axios = require('axios');
 
-const removeApostrophe = (string) => {
-    return string.replace(/\'/g, "\''");
-};
-const removeDoubleQoutes = (string) => {
-    return string.replace(/\"/g, '');
-}
+    const removeApostrophe = (string) => {
+        return string.replace(/\'/g, "\''");
+    };
+    const removeDoubleQoutes = (string) => {
+        return string.replace(/\"/g, '');
+    }
 
-const getAllInfarmations = async () => {
-   const { data } = await axios.get('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat');
-  
-   const airports = data.split('\n');
-   airports.pop();
-   const promises = airports.map(item => {
-       item = removeDoubleQoutes(removeApostrophe(item));
-       const arrAirpors = item.split(',');
-       db.query(`INSERT INTO airports (
-            airportId,
-            name,
-            city,
-            country,
-            iata,
-            icao,
-            latitude,
-            longitude,
-            altitude,
-            timezone,
-            dst,
-            tzDatabaseTimeZone,
-            type_id,
-            source_id)
-        VALUES 
-            (
-                '${arrAirpors[0]}',
-                '${arrAirpors[1]}',
-                '${arrAirpors[2]}',
-                '${arrAirpors[3]}',
-                '${arrAirpors[4]}',
-                '${arrAirpors[5]}',
-                '${arrAirpors[6]}',
-                '${arrAirpors[7]}',
-                '${arrAirpors[8]}',
-                '${arrAirpors[9]}',
-                '${arrAirpors[10]}',
-                '${arrAirpors[11]}',
-                '${arrAirpors[12]}',
-                '${arrAirpors[13]}')
-            ;`)
-   });
-  return await Promise.all(promises);
-}
+    const getAllInfarmations = async () => {
+    const { data } = await axios.get('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat');
+    
+    const airports = data.split('\n');
+    airports.pop();
+    const promises = airports.map(item => {
+        item = removeDoubleQoutes(removeApostrophe(item));
+        const arrAirpors = item.split(',');
+        db.query(`INSERT INTO airports (
+                    airport_id,
+                    name,
+                    city,
+                    country,
+                    iata,
+                    icao,
+                    latitude,
+                    longitude,
+                    altitude,
+                    timezone,
+                    dst,
+                    tzDatabaseTimeZone,
+                    type_id,
+                    source_id)
+            VALUES 
+                (
+                    '${arrAirpors[0]}',
+                    '${arrAirpors[1]}',
+                    '${arrAirpors[2]}',
+                    '${arrAirpors[3]}',
+                    '${arrAirpors[4]}',
+                    '${arrAirpors[5]}',
+                    '${arrAirpors[6]}',
+                    '${arrAirpors[7]}',
+                    '${arrAirpors[8]}',
+                    '${arrAirpors[9]}',
+                    '${arrAirpors[10]}',
+                    '${arrAirpors[11]}',
+                    '${arrAirpors[12]}',
+                    '${arrAirpors[13]}')
+                ;`)
+    });
+    return await Promise.all(promises);
+    }
 
 const createAirportsTable = async () => {
    return await db.query(
         `
         CREATE TABLE airports (
-            airportId int,
+            airport_id int,
             name text,
             city varchar(150),
             country varchar(100),
