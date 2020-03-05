@@ -13,6 +13,10 @@ const sequelize = new Sequelize("docker", "docker", "docker", {
     timestamps: false
   }
 });
+sequelize.sync().then(result=>{
+  console.log(result);
+})
+.catch(err=> console.log(err));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,7 +27,7 @@ app.use((req, res, next) => {
 app.use('/airports', airports);
 
 
-app.get('/', function(req, res) {кру
+app.get('/', function(req, res) {
   res.send('hello world');
 });
 

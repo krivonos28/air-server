@@ -1,8 +1,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Airports', {
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       airport_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       name: {
@@ -56,7 +61,9 @@ module.exports = {
       source_id: {
         type: Sequelize.STRING,
         allowNull: false
-      }
+      },
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

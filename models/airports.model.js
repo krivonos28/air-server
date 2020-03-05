@@ -1,65 +1,68 @@
-const Model = Sequelize.Model;
-class Airports extends Model {}
-Airports.init({
-  airport_id: {
-    type: Sequelize.STRING,
-    allowNull: false
+
+module.exports = (sequelize, DataTypes)  => {
+  const Airports = sequelize.define('Airport', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
   },
+  airport_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }, 
   name: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   city: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   country: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   iata: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   icao: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
-latitude: {
-  type: Sequelize.STRING,
-  allowNull: false
-},
+  latitude: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   longitude: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   altitude: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   timezone: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   dst: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   tzDatabaseTimeZone: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   type_id: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
     },
   source_id: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
 
-}, {
-  sequelize,
-  modelName: 'airports'
-  // options
 });
+return Airports
+};
