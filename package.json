@@ -16,6 +16,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && node index.js",
     "test": "jest",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",

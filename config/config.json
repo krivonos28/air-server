@@ -3,7 +3,7 @@
     "username": "docker",
     "password": "docker",
     "database": "docker",
-    "host": "0.0.0.0",
+    "host": "air-db",
     "port":"5432",
     "dialect": "postgres",
     "operatorsAliases": 0
