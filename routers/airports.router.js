@@ -1,15 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../models');
-//const Op = Sequelize.Op;
 
 router.get('/get-all-airports', async (req, res) => {
+    console.log('get all airports')
     const data = await models.Airport.findAll({order: ['airport_id']});
     res.send(data)
 });
-router.get('/', async (req, res) => {
-    res.send("Hello World!")
-})
 router.put('/', async (req, res) => {
     const {
         airport_id,

@@ -7,12 +7,14 @@
 // port: 5333,})
 
 const Sequelize = require('sequelize');
+//const sequelize = new Sequelize('postgres://docker:docker@air-db:5432/docker')
 
 // Option 1: Passing parameters separately
+console.log('-------', prcocess.env.PG_HOST)
 const sequelize = new Sequelize('docker', 'docker', 'docker', {
-  host: 'localhost',
-  port: 5333,
-  dialect: 'postgres' 
+  host: 'air-db',
+  port: 5432,
+  dialect: 'postgres'
 });
 
 

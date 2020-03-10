@@ -5,14 +5,16 @@ const airports = require('./routers/airports.router')
 const bodyParser = require('body-parser')
 const app = express();
 
-const sequelize = new Sequelize("docker", "docker", "docker", {
-  dialect: "postgres",
-  host: "localhost",
-  port: 5333,
-  define: {
-    timestamps: false
-  }
-});
+const sequelize = new Sequelize('postgres://docker:docker@air-db:5432/docker')
+console.log('her')
+// const sequelize = new Sequelize("docker", "docker", "docker", {
+//   dialect: "postgres",
+//   host: "air-db",
+//   port: 5432,
+//   define: {
+//     timestamps: false
+//   }
+// });
 sequelize.sync().then(result=>{
   console.log(result);
 })
